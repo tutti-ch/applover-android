@@ -1,0 +1,13 @@
+<manifest
+    package="ch.tutti.android.applover"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19"
+        tools:ignore="GradleOverrides" />
+
+    <application />
+
+</manifest>

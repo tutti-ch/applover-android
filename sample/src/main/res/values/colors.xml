@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="button_positive">#5500ff00</color>
+    <color name="button_positive_pressed">#9900ff00</color>
+    <color name="button_negative">#55ff0000</color>
+    <color name="button_negative_pressed">#99ff0000</color>
+</resources>

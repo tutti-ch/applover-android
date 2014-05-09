@@ -1,0 +1,26 @@
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.3"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 19
+
+        testPackageName "ch.tutti.android.applover.test"
+        testInstrumentationRunner "android.test.InstrumentationTestRunner"
+        testHandleProfiling true
+        testFunctionalTest true
+    }
+}
+
+dependencies {
+    provided 'com.android.support:appcompat-v7:+'
+    compile 'com.squareup.phrase:phrase:1.0.3'
+    compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
