@@ -13,6 +13,7 @@ import ch.tutti.android.applover.AppLoverDialogStyle;
 import ch.tutti.android.applover.criteria.AppLoverAppLaunchCriteria;
 import ch.tutti.android.applover.criteria.AppLoverCriteriaBuilder;
 import ch.tutti.android.applover.criteria.AppLoverCustomEventCriteria;
+import ch.tutti.android.applover.criteria.AppLoverFirstLaunchDaysCriteria;
 import ch.tutti.android.applover.criteria.AppLoverInstallDaysCriteria;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
@@ -43,17 +44,20 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         // Setting up of thresholds
         // All of the thresholds have to happen for the dialog to trigger
-        appLover.setInstallDaysThreshold(0) // default 10, 0 means install day.
-                .setLaunchCountThreshold(3) // default 10
+        appLover.setFirstLaunchDaysThreshold(0) // default 10, 0 means same day.
+                .setInstallDaysThreshold(0)     // default 10
+                .setLaunchCountThreshold(3)     // default 10
                 .setCustomEventCountThreshold("1", 3)  // default 0
                 .setCustomEventCountThreshold("2", 3); // default 0
 
         // set up custom criteria example
         // default is every criteria with AND
-        // install days && app launch && (event 1 || event 2)
+        // install days && first launch days && app launch && (event 1 || event 2)
         appLover.setShowDialogCriteria(
                 new AppLoverCriteriaBuilder(
                         new AppLoverInstallDaysCriteria()
+                ).and(
+                        new AppLoverFirstLaunchDaysCriteria()
                 ).and(
                         new AppLoverAppLaunchCriteria()
                 ).and(
@@ -108,8 +112,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         text.append("Do not show?:\t\t\t\t" + appLover.isDoNotShowAnymore(this) + LNBR);
         text.append("App launch count:\t" + appLover.getLaunchCount() + "/" + appLover
                 .getLaunchCountThreshold() + LNBR);
-        text.append("Days since install:\t" + appLover.getDaysSinceInstall() + "/" + appLover
-                .getDaysSinceInstallThreshold() + LNBR);
+        text.append("Days since install:\t" + appLover.getInstalledDays(this) + "/"
+                + appLover.getInstallDaysThreshold() + LNBR);
+        text.append("Days since first launch:\t" + appLover.getDaysSinceFirstLaunch() + "/"
+                + appLover.getFirstLaunchDaysThreshold() + LNBR);
         text.append("Custom event 1:\t\t" + appLover.getCustomEventCount(this, "1") + "/" + appLover
                 .getCustomEventCountThreshold("1") + LNBR);
         text.append("Custom event 2:\t\t" + appLover.getCustomEventCount(this, "2") + "/" + appLover

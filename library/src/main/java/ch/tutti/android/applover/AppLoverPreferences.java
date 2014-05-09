@@ -7,7 +7,7 @@ public class AppLoverPreferences {
 
     private static final String PREFERENCES_NAME = "android-applover";
 
-    private static final String KEY_INSTALLATION_DATE = "applover_install_date";
+    private static final String KEY_FIRST_LAUNCH_DATE = "applover_first_launch_date";
 
     private static final String KEY_APP_LAUNCH_COUNT = "applover_app_launch_count";
 
@@ -21,12 +21,12 @@ public class AppLoverPreferences {
         mPreferences = context.getSharedPreferences(PREFERENCES_NAME, Context.MODE_PRIVATE);
     }
 
-    public long getInstallationDate() {
-        return mPreferences.getLong(KEY_INSTALLATION_DATE, 0);
+    public long getFirstLaunchDate() {
+        return mPreferences.getLong(KEY_FIRST_LAUNCH_DATE, 0);
     }
 
-    public void setInstallationDate(long installationDate) {
-        mPreferences.edit().putLong(KEY_INSTALLATION_DATE, installationDate).commit();
+    public void setFirstLaunchDate(long firstLaunchDate) {
+        mPreferences.edit().putLong(KEY_FIRST_LAUNCH_DATE, firstLaunchDate).commit();
     }
 
     public int getLaunchCount() {

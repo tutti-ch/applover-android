@@ -1,7 +1,10 @@
 package ch.tutti.android.applover;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -10,7 +13,7 @@ import ch.tutti.android.applover.criteria.AppLoverAllCustomEventsReached;
 import ch.tutti.android.applover.criteria.AppLoverAppLaunchCriteria;
 import ch.tutti.android.applover.criteria.AppLoverCriteria;
 import ch.tutti.android.applover.criteria.AppLoverCriteriaBuilder;
-import ch.tutti.android.applover.criteria.AppLoverInstallDaysCriteria;
+import ch.tutti.android.applover.criteria.AppLoverFirstLaunchDaysCriteria;
 
 /**
  * Let users who like your app review it and those who don't write you an e-mail.
@@ -40,7 +43,9 @@ public class AppLover {
 
     private int mInstallDaysThreshold = DEFAULT_THRESHOLD;
 
-    private long mInstallDateTime;
+    private int mFirstLaunchDaysThreshold = DEFAULT_THRESHOLD;
+
+    private long mFirstLaunchDateTime;
 
     private int mLaunchCount;
 
@@ -59,7 +64,7 @@ public class AppLover {
 
     private AppLover() {
         mShowDialogCriteria = new AppLoverCriteriaBuilder(
-                new AppLoverInstallDaysCriteria())
+                new AppLoverFirstLaunchDaysCriteria())
                 .and(new AppLoverAppLaunchCriteria())
                 .and(new AppLoverAllCustomEventsReached())
                 .build();
@@ -69,7 +74,7 @@ public class AppLover {
         if (INSTANCE == null) {
             INSTANCE = new AppLover();
             AppLoverPreferences preferences = new AppLoverPreferences(context);
-            INSTANCE.mInstallDateTime = preferences.getInstallationDate();
+            INSTANCE.mFirstLaunchDateTime = preferences.getFirstLaunchDate();
             INSTANCE.mLaunchCount = preferences.getLaunchCount();
         }
         return INSTANCE;
@@ -129,13 +134,23 @@ public class AppLover {
         return mLaunchCountThreshold;
     }
 
-    public AppLover setInstallDaysThreshold(final int installDaysThreshold) {
+
+    public AppLover setInstallDaysThreshold(int installDaysThreshold) {
         mInstallDaysThreshold = installDaysThreshold;
         return this;
     }
 
-    public int getDaysSinceInstallThreshold() {
+    public int getInstallDaysThreshold() {
         return mInstallDaysThreshold;
+    }
+
+    public AppLover setFirstLaunchDaysThreshold(final int installDaysThreshold) {
+        mFirstLaunchDaysThreshold = installDaysThreshold;
+        return this;
+    }
+
+    public int getFirstLaunchDaysThreshold() {
+        return mFirstLaunchDaysThreshold;
     }
 
     public AppLover setCustomEventCountThreshold(String event, int eventCountThreshold) {
@@ -160,9 +175,9 @@ public class AppLover {
      */
     public void monitorLaunch(final Context context) {
         AppLoverPreferences preferences = new AppLoverPreferences(context);
-        if (mInstallDateTime == 0) {
-            mInstallDateTime = new Date().getTime();
-            preferences.setInstallationDate(mInstallDateTime);
+        if (mFirstLaunchDateTime == 0) {
+            mFirstLaunchDateTime = new Date().getTime();
+            preferences.setFirstLaunchDate(mFirstLaunchDateTime);
         }
         mLaunchCount = preferences.incLaunchCount();
     }
@@ -205,11 +220,28 @@ public class AppLover {
         return mLaunchCount;
     }
 
-    public int getDaysSinceInstall() {
-        if (mInstallDateTime == 0) {
+
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    public int getInstalledDays(Context context) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+            try {
+                long installedTime = System.currentTimeMillis() -
+                        context.getPackageManager().getPackageInfo(context.getPackageName(), 0)
+                                .firstInstallTime;
+                return (int) (installedTime / ONE_DAY);
+            } catch (PackageManager.NameNotFoundException e) {
+                return getDaysSinceFirstLaunch();
+            }
+        } else {
+            return getDaysSinceFirstLaunch();
+        }
+    }
+
+    public int getDaysSinceFirstLaunch() {
+        if (mFirstLaunchDateTime == 0) {
             return 0;
         }
-        return (int) ((new Date().getTime() - mInstallDateTime) / ONE_DAY);
+        return (int) ((new Date().getTime() - mFirstLaunchDateTime) / ONE_DAY);
     }
 
     public int getCustomEventCount(Context context, String event) {
@@ -242,7 +274,7 @@ public class AppLover {
      * Reset the statistics and start at 0.
      */
     public void reset(Context context) {
-        mInstallDateTime = 0;
+        mFirstLaunchDateTime = 0;
         mLaunchCount = 0;
         new AppLoverPreferences(context).clear();
     }
