@@ -43,7 +43,6 @@ class AppLoverDialogFactory {
         final Context context = listener.getActivity();
         final AlertDialog.Builder builder =
                 createBuilder(context, AppLover.get(context).getStyle().loveDialogStyle);
-        builder.setTitle("");
         builder.setMessage(Phrase.from(context, R.string.applover_do_you_like_this_app)
                 .put("app_name", context.getString(appNameResId))
                 .format());
@@ -69,9 +68,6 @@ class AppLoverDialogFactory {
     private static Dialog createRateDialog(final Context context, final int appNameResId) {
         final AlertDialog.Builder builder =
                 createBuilder(context, AppLover.get(context).getStyle().rateDialogStyle);
-        builder.setTitle(Phrase.from(context, R.string.applover_rate_title)
-                .put("app_name", context.getString(appNameResId))
-                .format());
         builder.setMessage(Phrase.from(context, R.string.applover_rate_text)
                 .put("app_name", context.getString(appNameResId))
                 .format());
@@ -113,9 +109,6 @@ class AppLoverDialogFactory {
     private static Dialog createEmailDialog(final Context context, final int appNameResId) {
         final AlertDialog.Builder builder =
                 createBuilder(context, AppLover.get(context).getStyle().emailDialogStyle);
-        builder.setTitle(Phrase.from(context, R.string.applover_feedback_title)
-                .put("app_name", context.getString(appNameResId))
-                .format());
         builder.setMessage(Phrase.from(context, R.string.applover_feedback_text)
                 .put("app_name", context.getString(appNameResId))
                 .format());
