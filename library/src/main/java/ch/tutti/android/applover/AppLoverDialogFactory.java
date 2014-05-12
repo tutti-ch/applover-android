@@ -44,7 +44,7 @@ class AppLoverDialogFactory {
         final AlertDialog.Builder builder =
                 createBuilder(context, AppLover.get(context).getStyle().loveDialogStyle);
         builder.setMessage(Phrase.from(context, R.string.applover_do_you_like_this_app)
-                .put("app_name", context.getString(appNameResId))
+                .putOptional("app_name", context.getString(appNameResId))
                 .format());
         builder.setPositiveButton(R.string.applover_yes, new DialogInterface.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ class AppLoverDialogFactory {
         final AlertDialog.Builder builder =
                 createBuilder(context, AppLover.get(context).getStyle().rateDialogStyle);
         builder.setMessage(Phrase.from(context, R.string.applover_rate_text)
-                .put("app_name", context.getString(appNameResId))
+                .putOptional("app_name", context.getString(appNameResId))
                 .format());
         builder.setPositiveButton(R.string.applover_rate_now,
                 new DialogInterface.OnClickListener() {
@@ -110,7 +110,7 @@ class AppLoverDialogFactory {
         final AlertDialog.Builder builder =
                 createBuilder(context, AppLover.get(context).getStyle().emailDialogStyle);
         builder.setMessage(Phrase.from(context, R.string.applover_feedback_text)
-                .put("app_name", context.getString(appNameResId))
+                .putOptional("app_name", context.getString(appNameResId))
                 .format());
         builder.setPositiveButton(R.string.applover_feedback_now,
                 new DialogInterface.OnClickListener() {
@@ -124,7 +124,7 @@ class AppLoverDialogFactory {
                         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{feedbackEmail});
                         intent.putExtra(Intent.EXTRA_SUBJECT,
                                 Phrase.from(context, R.string.applover_feedback_subject)
-                                        .put("app_name", context.getString(appNameResId))
+                                        .putOptional("app_name", context.getString(appNameResId))
                                         .format().toString()
                         );
                         intent.putExtra(Intent.EXTRA_TEXT, "");

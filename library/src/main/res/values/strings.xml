@@ -3,10 +3,10 @@
     <string name="applover_no">No</string>
     <string name="applover_later">Maybe later</string>
     <string name="applover_no_thanks">No, thanks</string>
-    <string name="applover_do_you_like_this_app">Do you love <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g>?</string>
-    <string name="applover_rate_text">Are you enjoying <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g>? Please take a moment to rate your experience. Thanks so much!</string>
+    <string name="applover_do_you_like_this_app">Do you love \"<xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g>\"?</string>
+    <string name="applover_rate_text">Are you enjoying \"<xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g>\"? Please take a moment to rate your experience. Thanks so much!</string>
     <string name="applover_rate_now">Rate now</string>
-    <string name="applover_feedback_text">Please let us know how we can make your experience with <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g> better. Thanks so much!</string>
+    <string name="applover_feedback_text">Please let us know how we can make your experience with \"<xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g>\" better. Thanks so much!</string>
     <string name="applover_feedback_now">Write e-mail</string>
     <string name="applover_feedback_subject">Feedback about <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g></string>
 </resources>
