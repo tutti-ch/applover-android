@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applover_yes">예</string>
+    <string name="applover_no">아니요</string>
+    <string name="applover_later">나중에 다시 알림</string>
+    <string name="applover_no_thanks">아니요, 괜찮습니다.</string>
+    <string name="applover_do_you_like_this_app">\"<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>\"을(를) 좋아합니까?</string>
+    <string name="applover_rate_text">\"<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>\"을(를) 즐기고 계십니까? 앱 평가를 위해 잠시 시간을 내어 주시기 바랍니다. 정말 감사합니다!</string>
+    <string name="applover_rate_now">지금 평가하기</string>
+    <string name="applover_feedback_text">\"<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>\"(으)로 더욱 멋진 경험을 만들어 드릴 수 있도록 조언해 주시기 바랍니다. 정말 감사합니다!</string>
+    <string name="applover_feedback_now">이메일 쓰기</string>
+    <string name="applover_feedback_subject"><xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>에 대한 의견</string>
+</resources>
