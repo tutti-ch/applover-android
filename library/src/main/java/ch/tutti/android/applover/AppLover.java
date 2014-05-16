@@ -121,8 +121,9 @@ public class AppLover {
      *
      * @param criteria criteria for the dialog to be shown
      */
-    public void setShowDialogCriteria(AppLoverCriteria criteria) {
+    public AppLover setShowDialogCriteria(AppLoverCriteria criteria) {
         mShowDialogCriteria = criteria;
+        return this;
     }
 
     public AppLover setLaunchCountThreshold(final int launchTimesThreshold) {
