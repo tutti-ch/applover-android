@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applover_yes">はい</string>
+    <string name="applover_no">いいえ</string>
+    <string name="applover_later">後で</string>
+    <string name="applover_no_thanks">いいえ</string>
+    <string name="applover_do_you_like_this_app">このアプリが好きですか？</string>
+    <string name="applover_rate_text">評価をして頂けますか？</string>
+    <string name="applover_rate_now">はい</string>
+    <string name="applover_feedback_text">どのように向上させたら良いかコメントをお願いします。</string>
+    <string name="applover_feedback_now">メールを書く</string>
+    <string name="applover_feedback_subject"><xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g>のフィードバック</string>
+</resources>
