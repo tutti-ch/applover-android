@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applover_yes">是</string>
+    <string name="applover_no">不是</string>
+    <string name="applover_later">以後吧</string>
+    <string name="applover_no_thanks">不用了，謝謝。</string>
+    <string name="applover_do_you_like_this_app">你熱愛“<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>”嗎？</string>
+    <string name="applover_rate_text">你享受“<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>”嗎？請花一點時間來評分你的體驗。非常感謝！</string>
+    <string name="applover_rate_now">現在評分吧！</string>
+    <string name="applover_feedback_text">請讓我們知道我們如何才能使你的“<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>”體驗更好。非常感謝！</string>
+    <string name="applover_feedback_now">寫郵件</string>
+    <string name="applover_feedback_subject">關於<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>的反饋</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="applover_yes">Ja</string>
+    <string name="applover_no">Nej</string>
+    <string name="applover_later">Kanske senare</string>
+    <string name="applover_no_thanks">Nej tack</string>
+    <string name="applover_do_you_like_this_app">Älskar du \"<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>\"?</string>
+    <string name="applover_rate_text">Gillar du  \"<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>\"? Ta ett ögonblick och betygsätt din upplevelse. Tack så mycket!</string>
+    <string name="applover_rate_now">Betygsätt nu</string>
+    <string name="applover_feedback_text">Berätta för oss hur vi kan göra din erfarenhet av \"<xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>\" bättre. Tack så mycket!</string>
+    <string name="applover_feedback_now">Skriv e-postmeddelande</string>
+    <string name="applover_feedback_subject">Feedback om <xliff:g example="Awesome App" id="app_name">{app_name}</xliff:g>
+  </string>
+</resources>
