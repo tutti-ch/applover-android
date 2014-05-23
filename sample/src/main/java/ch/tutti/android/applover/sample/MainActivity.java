@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.security.InvalidParameterException;
 
@@ -68,6 +69,41 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                         ).build()
                 ).build()
         );
+
+        // Optional to track with analytics
+        appLover.setOnTrackListener(new AppLover.OnTrackListener() {
+            @Override
+            public void onTrackDialogShown(int dialogType) {
+                toast(dialogType, "SHOW");
+            }
+
+            @Override
+            public void onTrackDialogCanceled(int dialogType) {
+                toast(dialogType, "CANCEL");
+            }
+
+            @Override
+            public void onTrackDialogButtonPressed(int dialogType, String button) {
+                toast(dialogType, "BUTTON: " + button);
+            }
+
+            private void toast(int dialogType, String action) {
+                Toast.makeText(MainActivity.this,
+                        getDialogTypeString(dialogType) + ": " + action, Toast.LENGTH_SHORT).show();
+            }
+
+            private String getDialogTypeString(int dialogType) {
+                switch (dialogType) {
+                    case AppLover.DIALOG_TYPE_FIRST:
+                        return "Love";
+                    case AppLover.DIALOG_TYPE_RATE:
+                        return "Rate";
+                    case AppLover.DIALOG_TYPE_EMAIL:
+                        return "Email";
+                }
+                throw new InvalidParameterException("dialogType is incorrect");
+            }
+        });
 
         // Monitor launch
         appLover.monitorLaunch(this);

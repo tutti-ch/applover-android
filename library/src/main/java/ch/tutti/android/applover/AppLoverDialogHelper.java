@@ -27,9 +27,14 @@ class AppLoverDialogHelper {
         return args;
     }
 
-    public static Dialog createDialog(DialogListener listener, Bundle arguments) {
-        return AppLoverDialogFactory.create(listener,
-                arguments.getInt(ARGUMENT_DIALOG_TYPE), arguments.getInt(ARGUMENT_APP_NAME));
+    public static Dialog createDialog(DialogListener listener, Bundle arguments,
+            Bundle savedInstanceState) {
+        int dialogType = arguments.getInt(ARGUMENT_DIALOG_TYPE);
+        if (savedInstanceState == null) {
+            AppLover.get(null).trackDialogShown(dialogType);
+        }
+        return AppLoverDialogFactory.create(
+                listener, dialogType, arguments.getInt(ARGUMENT_APP_NAME));
     }
 
     public static void showDialog(Activity activity, int dialogType, Bundle arguments) {

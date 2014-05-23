@@ -25,7 +25,6 @@ class AppLoverDialogFactory {
      */
     public static Dialog create(final AppLoverDialogHelper.DialogListener listener, int dialogType,
             int appNameResId) {
-        AppLover.get(null).trackDialogShown(dialogType);
         switch (dialogType) {
             case AppLover.DIALOG_TYPE_FIRST:
                 return createFirstDialog(listener, appNameResId);

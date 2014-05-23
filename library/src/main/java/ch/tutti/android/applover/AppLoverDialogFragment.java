@@ -18,7 +18,7 @@ public class AppLoverDialogFragment extends DialogFragment implements AppLoverDi
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        return AppLoverDialogHelper.createDialog(this, getArguments());
+        return AppLoverDialogHelper.createDialog(this, getArguments(), savedInstanceState);
     }
 
     @Override
