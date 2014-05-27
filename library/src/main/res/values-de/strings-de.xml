@@ -8,5 +8,5 @@
     <string name="applover_rate_now">Jetzt bewerten</string>
     <string name="applover_feedback_text">Schade, dass Ihnen unsere App nicht gefällt. Möchten Sie uns sagen, was wir verbessern können?</string>
     <string name="applover_feedback_now">Feedback abgeben</string>
-    <string name="applover_feedback_subject">Feedback zu <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g></string>
+    <string name="applover_feedback_subject">Mein Feedback zu <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g></string>
 </resources>

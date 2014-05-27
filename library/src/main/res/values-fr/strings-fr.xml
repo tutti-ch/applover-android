@@ -6,7 +6,7 @@
     <string name="applover_do_you_like_this_app">Êtes-vous satisfait de l\'appli <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g>?</string>
     <string name="applover_rate_text">Nous nous réjouissons que notre appli vous plaise. Voulez-vous nous donner une évaluation?</string>
     <string name="applover_rate_now">Evaluer maintenant</string>
-    <string name="applover_feedback_text">C\'est dommage que l\'appli vous ne plaît pas. Voulez-vous nous dire ce que nous pouvons amender?</string>
+    <string name="applover_feedback_text">C\'est dommage que l\'appli ne vous plaise pas. Voulez-vous nous dire ce que nous pouvons améliorer?</string>
     <string name="applover_feedback_now">Donner le feedback</string>
-    <string name="applover_feedback_subject">Feedback à propos de l\'appli <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g></string>
+    <string name="applover_feedback_subject">Mon feedback pour <xliff:g id="app_name" example="Awesome App">{app_name}</xliff:g></string>
 </resources>
