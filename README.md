@@ -1,7 +1,9 @@
 # AppLover - Android
 
+![AppLover](https://raw.github.com/tutti-ch/applover-android/master/preview.png)
+
 ## Features
-- Aks users if they like the app
+- Ask users if they like the app
 - Users who like the app -> Ask them to rate the app in Google Play
 - Users who dislike the app -> Ask them to send an e-mail to tell how to improve the app
 - Very customizable
