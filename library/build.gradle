@@ -1,14 +1,14 @@
-apply plugin: 'android-library'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    buildToolsVersion "20.0.0"
 
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 19
 
-        testPackageName "ch.tutti.android.applover.test"
+        testApplicationId "ch.tutti.android.applover.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
         testHandleProfiling true
         testFunctionalTest true
@@ -16,7 +16,7 @@ android {
 }
 
 dependencies {
-    provided 'com.android.support:appcompat-v7:+'
+    provided 'com.android.support:appcompat-v7:20.+'
     compile 'com.squareup.phrase:phrase:1.0.3'
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 }
@@ -25,6 +25,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-apply from: 'https://raw.github.com/aectann/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply from: 'https://raw.github.com/shamanland/gradle-mvn-push/master/gradle-mvn-push.gradle'
 // using above because that one has a necessary fix to comply with 0.10+ android gradle plugin.
 //apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
