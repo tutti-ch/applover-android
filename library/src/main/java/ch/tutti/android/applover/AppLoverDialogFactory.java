@@ -56,7 +56,7 @@ class AppLoverDialogFactory {
             final int appNameResId) {
         final Context context = listener.getActivity();
         final AlertDialog.Builder builder =
-                createBuilder(context, AppLover.get(context).getStyle().loveDialogStyle);
+                createBuilder(context, AppLover.get(context).getProperties().loveDialogStyle);
         builder.setMessage(Phrase.from(context, R.string.applover_do_you_like_this_app)
                 .putOptional("app_name", context.getString(appNameResId))
                 .format());
@@ -81,7 +81,7 @@ class AppLoverDialogFactory {
 
     private static Dialog createRateDialog(final Context context, final int appNameResId) {
         final AlertDialog.Builder builder =
-                createBuilder(context, AppLover.get(context).getStyle().rateDialogStyle);
+                createBuilder(context, AppLover.get(context).getProperties().rateDialogStyle);
         builder.setMessage(Phrase.from(context, R.string.applover_rate_text)
                 .putOptional("app_name", context.getString(appNameResId))
                 .format());
@@ -121,8 +121,10 @@ class AppLoverDialogFactory {
     }
 
     private static Dialog createEmailDialog(final Context context, final int appNameResId) {
-        final AlertDialog.Builder builder =
-                createBuilder(context, AppLover.get(context).getStyle().emailDialogStyle);
+        AppLoverDialogsProperties.Style style = AppLover.get(context).getProperties().emailDialogStyle;
+        
+        final AlertDialog.Builder builder = createBuilder(context, style);
+        
         builder.setMessage(Phrase.from(context, R.string.applover_feedback_text)
                 .putOptional("app_name", context.getString(appNameResId))
                 .format());
@@ -169,7 +171,7 @@ class AppLoverDialogFactory {
     }
 
     private static AlertDialog.Builder createBuilder(Context context,
-            AppLoverDialogStyle.Style style) {
+            AppLoverDialogsProperties.Style style) {
         if (style != null && style.theme != 0) {
             return new AlertDialog.Builder(new ContextThemeWrapper(context, style.theme));
         } else {

@@ -15,7 +15,7 @@
  */
 package ch.tutti.android.applover;
 
-public class AppLoverDialogStyle {
+public class AppLoverDialogsProperties {
 
     public Style loveDialogStyle;
 
@@ -23,17 +23,17 @@ public class AppLoverDialogStyle {
 
     public Style emailDialogStyle;
 
-    public AppLoverDialogStyle loveStyle(Style style) {
+    public AppLoverDialogsProperties loveStyle(Style style) {
         loveDialogStyle = style;
         return this;
     }
 
-    public AppLoverDialogStyle rateStyle(Style style) {
+    public AppLoverDialogsProperties rateStyle(Style style) {
         rateDialogStyle = style;
         return this;
     }
 
-    public AppLoverDialogStyle emailStyle(Style style) {
+    public AppLoverDialogsProperties emailStyle(Style style) {
         emailDialogStyle = style;
         return this;
     }
@@ -41,12 +41,16 @@ public class AppLoverDialogStyle {
     public static class Style {
 
         int theme;
-
+        
         int positiveButtonBackground;
-
+        
         int neutralButtonBackground;
-
+        
         int negativeButtonBackground;
+        
+        // string resources ids for text customization
+        int message, positiveButtonText, negativeButtonText, neutralButtonText;
+        
 
         public Style theme(int theme) {
             this.theme = theme;
@@ -65,6 +69,28 @@ public class AppLoverDialogStyle {
 
         public Style negativeBackground(int background) {
             negativeButtonBackground = background;
+            return this;
+        }
+
+        public Style message(int stringId) {
+            message = stringId;
+            return this;
+        }
+        
+        public Style positiveButtonText(int stringId) {
+            positiveButtonText = stringId;
+            return this;
+        }
+
+
+        public Style negativeButtonText(int stringId) {
+            negativeButtonText = stringId;
+            return this;
+        }
+
+
+        public Style neutralButtonText(int stringId) {
+            neutralButtonText = stringId;
             return this;
         }
     }

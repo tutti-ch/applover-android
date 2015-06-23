@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.annotation.NonNull;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -68,7 +69,7 @@ public class AppLover {
 
     private String mFeedbackEmail;
 
-    private AppLoverDialogStyle mStyle;
+    private AppLoverDialogsProperties mDialogsProperties;
 
     private HashMap<String, Integer> mCustomEventThresholdMap
             = new HashMap<String, Integer>();
@@ -100,12 +101,13 @@ public class AppLover {
         return this;
     }
 
-    public AppLoverDialogStyle getStyle() {
-        return mStyle == null ? new AppLoverDialogStyle() : mStyle;
+    @NonNull
+    public AppLoverDialogsProperties getProperties() {
+        return mDialogsProperties == null ? new AppLoverDialogsProperties() : mDialogsProperties;
     }
 
-    public AppLover setStyle(AppLoverDialogStyle style) {
-        mStyle = style;
+    public AppLover setProperties(AppLoverDialogsProperties properties) {
+        mDialogsProperties = properties;
         return this;
     }
 
