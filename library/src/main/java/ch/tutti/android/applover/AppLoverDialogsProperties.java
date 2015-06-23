@@ -15,13 +15,18 @@
  */
 package ch.tutti.android.applover;
 
+import android.support.annotation.NonNull;
+
 public class AppLoverDialogsProperties {
 
-    public Style loveDialogStyle;
+    @NonNull
+    public Style loveDialogStyle = new AppLoverDialogsProperties.Style();
 
-    public Style rateDialogStyle;
+    @NonNull
+    public Style rateDialogStyle = new AppLoverDialogsProperties.Style();
 
-    public Style emailDialogStyle;
+    @NonNull
+    public Style emailDialogStyle = new AppLoverDialogsProperties.Style();
 
     public AppLoverDialogsProperties loveStyle(Style style) {
         loveDialogStyle = style;
@@ -49,8 +54,7 @@ public class AppLoverDialogsProperties {
         int negativeButtonBackground;
         
         // string resources ids for text customization
-        int message, positiveButtonText, negativeButtonText, neutralButtonText;
-        
+        private int message, positiveButtonText, negativeButtonText, neutralButtonText;
 
         public Style theme(int theme) {
             this.theme = theme;
@@ -92,6 +96,34 @@ public class AppLoverDialogsProperties {
         public Style neutralButtonText(int stringId) {
             neutralButtonText = stringId;
             return this;
+        }
+
+        /**
+         * get the string id if previously set, default value otherwise
+         */
+        int getMessage(int defaultValue) {
+           return message > 0 ? message : defaultValue;
+        }
+
+        /**
+         * get the string id if previously set, default value otherwise
+         */
+        int getPositiveButtonText(int defaultValue) {
+            return positiveButtonText > 0 ? positiveButtonText : defaultValue;
+        }
+
+        /**
+         * get the string id if previously set, default value otherwise
+         */
+        int getNegativeButtonText(int defaultValue) {
+            return negativeButtonText > 0 ? negativeButtonText : defaultValue;
+        }
+
+        /**
+         * get the string id if previously set, default value otherwise
+         */
+        int getNeutralButtonText(int defaultValue) {
+            return neutralButtonText > 0 ? neutralButtonText : defaultValue;
         }
     }
 }
