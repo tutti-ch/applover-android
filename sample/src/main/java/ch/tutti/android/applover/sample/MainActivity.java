@@ -24,7 +24,7 @@ import android.widget.TextView;
 import java.security.InvalidParameterException;
 
 import ch.tutti.android.applover.AppLover;
-import ch.tutti.android.applover.AppLoverDialogStyle;
+import ch.tutti.android.applover.AppLoverDialogsProperties;
 import ch.tutti.android.applover.criteria.AppLoverAppLaunchCriteria;
 import ch.tutti.android.applover.criteria.AppLoverCriteriaBuilder;
 import ch.tutti.android.applover.criteria.AppLoverCustomEventCriteria;
@@ -48,13 +48,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // Basic configuration. Email is needed. Tracking (analytics) and style are optional.
         appLover.setFeedbackEmail("support@yourapp.com")
                 .setOnTrackListener(new SampleOnTrackListener())
-                .setStyle(new AppLoverDialogStyle()
-                        .loveStyle(new AppLoverDialogStyle.Style()
+                .setProperties(new AppLoverDialogsProperties()
+                        .loveStyle(new AppLoverDialogsProperties.Style()
                                 .positiveBackground(R.drawable.button_positive)
-                                .negativeBackground(R.drawable.button_negative))
-                        .rateStyle(new AppLoverDialogStyle.Style()
+                                .negativeBackground(R.drawable.button_negative)
+                                .message(R.string.custom_like_message)
+                                .positiveButtonText(R.string.yes_button)
+                                .negativeButtonText(R.string.no_button)
+                                .neutralButtonText(R.string.may_be_button))
+                        .rateStyle(new AppLoverDialogsProperties.Style()
                                 .positiveBackground(R.drawable.button_positive))
-                        .emailStyle(new AppLoverDialogStyle.Style()
+                        .emailStyle(new AppLoverDialogsProperties.Style()
                                 .positiveBackground(R.drawable.button_positive)));
 
         // Setting up of thresholds
@@ -83,7 +87,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                         ).build()
                 ).build()
         );
-
+        
         // Monitor launch
         appLover.monitorLaunch(this);
 
