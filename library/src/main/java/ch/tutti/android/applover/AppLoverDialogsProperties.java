@@ -55,6 +55,8 @@ public class AppLoverDialogsProperties {
         
         // string resources ids for text customization
         private int message, positiveButtonText, negativeButtonText, neutralButtonText;
+        
+        boolean showNeutralButton = true; // show by default
 
         public Style theme(int theme) {
             this.theme = theme;
@@ -124,6 +126,10 @@ public class AppLoverDialogsProperties {
          */
         int getNeutralButtonText(int defaultValue) {
             return neutralButtonText > 0 ? neutralButtonText : defaultValue;
+        }
+        
+        void showNeutralButton(boolean show) {
+            showNeutralButton = show;
         }
     }
 }

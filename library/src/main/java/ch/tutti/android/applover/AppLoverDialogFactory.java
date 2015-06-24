@@ -151,14 +151,16 @@ class AppLoverDialogFactory {
                     }
                 }
         );
-        builder.setNeutralButton(style.getNeutralButtonText(R.string.applover_later), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                AppLover.get(null).trackDialogButtonPressed(
-                        AppLover.DIALOG_TYPE_EMAIL, AppLover.BUTTON_LATER);
-                AppLover.get(context).reset(context);
-            }
-        });
+        if (style.showNeutralButton) {
+            builder.setNeutralButton(style.getNeutralButtonText(R.string.applover_later), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    AppLover.get(null).trackDialogButtonPressed(
+                            AppLover.DIALOG_TYPE_EMAIL, AppLover.BUTTON_LATER);
+                    AppLover.get(context).reset(context);
+                }
+            });
+        }
         builder.setNegativeButton(style.getNegativeButtonText(R.string.applover_no_thanks),
                 new DialogInterface.OnClickListener() {
                     @Override
