@@ -128,7 +128,7 @@ public class AppLoverDialogsProperties {
             return neutralButtonText > 0 ? neutralButtonText : defaultValue;
         }
         
-        void showNeutralButton(boolean show) {
+        public void showNeutralButton(boolean show) {
             showNeutralButton = show;
         }
     }
