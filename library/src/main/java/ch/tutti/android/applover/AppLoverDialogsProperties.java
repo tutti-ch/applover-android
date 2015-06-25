@@ -100,6 +100,11 @@ public class AppLoverDialogsProperties {
             return this;
         }
 
+        public Style showNeutralButton(boolean show) {
+            showNeutralButton = show;
+            return this;
+        }
+
         /**
          * get the string id if previously set, default value otherwise
          */
@@ -126,10 +131,6 @@ public class AppLoverDialogsProperties {
          */
         int getNeutralButtonText(int defaultValue) {
             return neutralButtonText > 0 ? neutralButtonText : defaultValue;
-        }
-        
-        public void showNeutralButton(boolean show) {
-            showNeutralButton = show;
         }
     }
 }

@@ -59,6 +59,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                         .rateStyle(new AppLoverDialogsProperties.Style()
                                 .positiveBackground(R.drawable.button_positive))
                         .emailStyle(new AppLoverDialogsProperties.Style()
+                                .showNeutralButton(false)
                                 .positiveBackground(R.drawable.button_positive)));
 
         // Setting up of thresholds
@@ -90,6 +91,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         
         // Monitor launch
         appLover.monitorLaunch(this);
+        
+        appLover.setShowDialogCriteria(null);
 
         // Show a dialog if meets conditions
         appLover.showDialogIfConditionsMet(this);
