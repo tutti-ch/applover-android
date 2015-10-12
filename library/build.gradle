@@ -1,12 +1,12 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1"
+    compileSdkVersion 23
+    buildToolsVersion '23.0.1'
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 21
+        targetSdkVersion 23
 
         testApplicationId "ch.tutti.android.applover.test"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
@@ -16,7 +16,7 @@ android {
 }
 
 dependencies {
-    provided 'com.android.support:appcompat-v7:21.0.0'
+    provided 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.squareup.phrase:phrase:1.0.3'
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 }

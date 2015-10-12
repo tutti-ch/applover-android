@@ -16,6 +16,7 @@
 package ch.tutti.android.applover;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -55,6 +56,6 @@ public class AppLoverDialogSupportFragment extends DialogFragment
         super.onCancel(dialog);
         AppLover.get(null).trackDialogCanceled(
                 getArguments().getInt(AppLoverDialogHelper.ARGUMENT_DIALOG_TYPE));
-        AppLoverDialogHelper.onCancel(getActivity());
+        AppLoverDialogHelper.onCancel(getContext());
     }
 }
