@@ -56,6 +56,15 @@ public class AppLoverDialogSupportFragment extends DialogFragment
         super.onCancel(dialog);
         AppLover.get(null).trackDialogCanceled(
                 getArguments().getInt(AppLoverDialogHelper.ARGUMENT_DIALOG_TYPE));
-        AppLoverDialogHelper.onCancel(getContext());
+        Context context = null;
+        if (dialog instanceof Dialog) {
+            context = ((Dialog) dialog).getContext();
+        } else {
+            context = getContext();
+        }
+        if (context != null) {
+            AppLoverDialogHelper.onCancel(context);
+        }
+
     }
 }
