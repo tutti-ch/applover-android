@@ -55,12 +55,13 @@ class AppLoverDialogFactory {
     private static Dialog createFirstDialog(final AppLoverDialogHelper.DialogListener listener,
             final int appNameResId) {
         final Context context = listener.getActivity();
-        final AlertDialog.Builder builder =
-                createBuilder(context, AppLover.get(context).getStyle().loveDialogStyle);
-        builder.setMessage(Phrase.from(context, R.string.applover_do_you_like_this_app)
+        AppLoverDialogsProperties.Style style = AppLover.get(context).getProperties().loveDialogStyle;
+
+        final AlertDialog.Builder builder = createBuilder(context, style);
+        builder.setMessage(Phrase.from(context, style.getMessage(R.string.applover_do_you_like_this_app))
                 .putOptional("app_name", context.getString(appNameResId))
                 .format());
-        builder.setPositiveButton(R.string.applover_yes, new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(style.getPositiveButtonText(R.string.applover_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 AppLover.get(null)
@@ -68,7 +69,7 @@ class AppLoverDialogFactory {
                 listener.showRateDialog();
             }
         });
-        builder.setNegativeButton(R.string.applover_no, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(style.getNegativeButtonText(R.string.applover_no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 AppLover.get(null)
@@ -80,12 +81,12 @@ class AppLoverDialogFactory {
     }
 
     private static Dialog createRateDialog(final Context context, final int appNameResId) {
-        final AlertDialog.Builder builder =
-                createBuilder(context, AppLover.get(context).getStyle().rateDialogStyle);
-        builder.setMessage(Phrase.from(context, R.string.applover_rate_text)
+        AppLoverDialogsProperties.Style style = AppLover.get(context).getProperties().rateDialogStyle;
+        final AlertDialog.Builder builder = createBuilder(context, style);
+        builder.setMessage(Phrase.from(context, style.getMessage(R.string.applover_rate_text))
                 .putOptional("app_name", context.getString(appNameResId))
                 .format());
-        builder.setPositiveButton(R.string.applover_rate_now,
+        builder.setPositiveButton(style.getPositiveButtonText(R.string.applover_rate_now),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -99,15 +100,16 @@ class AppLoverDialogFactory {
                     }
                 }
         );
-        builder.setNeutralButton(R.string.applover_later, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                AppLover.get(null).trackDialogButtonPressed(
-                        AppLover.DIALOG_TYPE_RATE, AppLover.BUTTON_LATER);
-                AppLover.get(context).reset(context);
-            }
-        });
-        builder.setNegativeButton(R.string.applover_no_thanks,
+        builder.setNeutralButton(style.getNeutralButtonText(R.string.applover_later),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AppLover.get(null).trackDialogButtonPressed(
+                                AppLover.DIALOG_TYPE_RATE, AppLover.BUTTON_LATER);
+                        AppLover.get(context).reset(context);
+                    }
+                });
+        builder.setNegativeButton(style.getNegativeButtonText(R.string.applover_no_thanks),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -121,12 +123,14 @@ class AppLoverDialogFactory {
     }
 
     private static Dialog createEmailDialog(final Context context, final int appNameResId) {
-        final AlertDialog.Builder builder =
-                createBuilder(context, AppLover.get(context).getStyle().emailDialogStyle);
-        builder.setMessage(Phrase.from(context, R.string.applover_feedback_text)
+        AppLoverDialogsProperties.Style style = AppLover.get(context).getProperties().emailDialogStyle;
+        
+        final AlertDialog.Builder builder = createBuilder(context, style);
+        
+        builder.setMessage(Phrase.from(context, style.getMessage(R.string.applover_feedback_text))
                 .putOptional("app_name", context.getString(appNameResId))
                 .format());
-        builder.setPositiveButton(R.string.applover_feedback_now,
+        builder.setPositiveButton(style.getPositiveButtonText(R.string.applover_feedback_now),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -147,15 +151,17 @@ class AppLoverDialogFactory {
                     }
                 }
         );
-        builder.setNeutralButton(R.string.applover_later, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                AppLover.get(null).trackDialogButtonPressed(
-                        AppLover.DIALOG_TYPE_EMAIL, AppLover.BUTTON_LATER);
-                AppLover.get(context).reset(context);
-            }
-        });
-        builder.setNegativeButton(R.string.applover_no_thanks,
+        if (style.showNeutralButton) {
+            builder.setNeutralButton(style.getNeutralButtonText(R.string.applover_later), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    AppLover.get(null).trackDialogButtonPressed(
+                            AppLover.DIALOG_TYPE_EMAIL, AppLover.BUTTON_LATER);
+                    AppLover.get(context).reset(context);
+                }
+            });
+        }
+        builder.setNegativeButton(style.getNegativeButtonText(R.string.applover_no_thanks),
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -169,7 +175,7 @@ class AppLoverDialogFactory {
     }
 
     private static AlertDialog.Builder createBuilder(Context context,
-            AppLoverDialogStyle.Style style) {
+            AppLoverDialogsProperties.Style style) {
         if (style != null && style.theme != 0) {
             return new AlertDialog.Builder(new ContextThemeWrapper(context, style.theme));
         } else {

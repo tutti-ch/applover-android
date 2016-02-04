@@ -2,5 +2,9 @@
 <resources>
 
     <string name="app_name">App Lover sample</string>
+    <string name="yes_button">But why?</string>
+    <string name="no_button">no, screw it</string>
+    <string name="may_be_button">may be later...</string>
+    <string name="custom_like_message">do you like our badas app</string>
 
 </resources>
