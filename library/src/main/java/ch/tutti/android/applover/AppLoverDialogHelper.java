@@ -102,7 +102,7 @@ class AppLoverDialogHelper {
     public static void updateDialogStyle(Bundle arguments, Dialog dialog) {
         AlertDialog alertDialog = (AlertDialog) dialog;
         int dialogType = arguments.getInt(ARGUMENT_DIALOG_TYPE);
-        AppLoverDialogStyle style = AppLover.get(null).getStyle();
+        AppLoverDialogsProperties style = AppLover.get(null).getProperties();
 
         switch (dialogType) {
             case AppLover.DIALOG_TYPE_FIRST:
@@ -117,7 +117,7 @@ class AppLoverDialogHelper {
         }
     }
 
-    private static void applyStyle(AlertDialog dialog, AppLoverDialogStyle.Style style) {
+    private static void applyStyle(AlertDialog dialog, AppLoverDialogsProperties.Style style) {
         if (style == null) {
             return;
         }
