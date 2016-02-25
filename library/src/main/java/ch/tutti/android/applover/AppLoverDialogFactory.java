@@ -39,21 +39,21 @@ class AppLoverDialogFactory {
      * @param appNameResId string resource for app name
      */
     public static Dialog create(final AppLoverDialogHelper.DialogListener listener, int dialogType,
-                                int appNameResId) {
+                                int appNameResId, ConfigureDialogs configureDialogs) {
         switch (dialogType) {
             case AppLover.DIALOG_TYPE_FIRST:
-                return createFirstDialog(listener, appNameResId);
+                return createFirstDialog(listener, appNameResId, configureDialogs);
             case AppLover.DIALOG_TYPE_RATE:
-                return createRateDialog(listener.getActivity(), appNameResId);
+                return createRateDialog(listener.getActivity(), appNameResId, configureDialogs);
             case AppLover.DIALOG_TYPE_EMAIL:
-                return createEmailDialog(listener.getActivity(), appNameResId);
+                return createEmailDialog(listener.getActivity(), appNameResId, configureDialogs);
         }
         throw new InvalidParameterException(
                 "Parameter dialogType is not valid. Needs to be a dialog defined in DialogFactory.");
     }
 
     private static Dialog createFirstDialog(final AppLoverDialogHelper.DialogListener listener,
-                                            final int appNameResId) {
+                                            final int appNameResId, ConfigureDialogs configureDialogs) {
         final Context context = listener.getActivity();
         final MaterialDialog.Builder builder =
                 new MaterialDialog.Builder(context);
@@ -78,10 +78,13 @@ class AppLoverDialogFactory {
                 listener.showEmailDialog();
             }
         });
+        if (configureDialogs != null) {
+            configureDialogs.configureFirstDialog(builder);
+        }
         return builder.build();
     }
 
-    private static Dialog createRateDialog(final Context context, final int appNameResId) {
+    private static Dialog createRateDialog(final Context context, final int appNameResId, ConfigureDialogs configureDialogs) {
         final MaterialDialog.Builder builder =
                 new MaterialDialog.Builder(context);
         builder.content(Phrase.from(context, R.string.applover_rate_text)
@@ -118,10 +121,13 @@ class AppLoverDialogFactory {
                 new AppLoverPreferences(context).setDoNotShowAnymore();
             }
         });
+        if (configureDialogs != null) {
+            configureDialogs.configureRateDialog(builder);
+        }
         return builder.build();
     }
 
-    private static Dialog createEmailDialog(final Context context, final int appNameResId) {
+    private static Dialog createEmailDialog(final Context context, final int appNameResId, ConfigureDialogs configureDialogs) {
         final MaterialDialog.Builder builder =
                 new MaterialDialog.Builder(context);
         builder.content(Phrase.from(context, R.string.applover_feedback_text)
@@ -179,6 +185,10 @@ class AppLoverDialogFactory {
                            }
 
         );
+        if (configureDialogs != null) {
+            configureDialogs.configureEmailDialog(builder);
+        }
         return builder.build();
     }
+
 }

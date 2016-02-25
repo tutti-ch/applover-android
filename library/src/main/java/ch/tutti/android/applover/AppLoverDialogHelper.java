@@ -49,7 +49,7 @@ class AppLoverDialogHelper {
             AppLover.get(null).trackDialogShown(dialogType);
         }
         return AppLoverDialogFactory.create(
-                listener, dialogType, arguments.getInt(ARGUMENT_APP_NAME));
+                listener, dialogType, arguments.getInt(ARGUMENT_APP_NAME), AppLover.INSTANCE.getDialogsConfigurator());
     }
 
     public static void showDialog(Activity activity, int dialogType, Bundle arguments) {

@@ -52,13 +52,15 @@ public class AppLover {
 
     private static final int ONE_DAY = 24 * 60 * 60 * 1000;
 
-    private static AppLover INSTANCE;
+    static AppLover INSTANCE;
 
     private int mLaunchCountThreshold = DEFAULT_THRESHOLD;
 
     private int mInstallDaysThreshold = DEFAULT_THRESHOLD;
 
     private int mFirstLaunchDaysThreshold = DEFAULT_THRESHOLD;
+
+    private ConfigureDialogs mConfigurator;
 
     private long mFirstLaunchDateTime;
 
@@ -134,6 +136,16 @@ public class AppLover {
         mLaunchCountThreshold = launchTimesThreshold;
         return this;
     }
+
+    public AppLover setDialogsConfigurator(ConfigureDialogs configurator) {
+        mConfigurator = configurator;
+        return this;
+    }
+
+    public ConfigureDialogs getDialogsConfigurator() {
+        return mConfigurator;
+    }
+
 
     public int getLaunchCountThreshold() {
         return mLaunchCountThreshold;

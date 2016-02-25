@@ -15,22 +15,28 @@
  */
 package ch.tutti.android.applover.sample;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import java.security.InvalidParameterException;
 
 import ch.tutti.android.applover.AppLover;
+import ch.tutti.android.applover.ConfigureDialogs;
 import ch.tutti.android.applover.criteria.AppLoverAppLaunchCriteria;
 import ch.tutti.android.applover.criteria.AppLoverCriteriaBuilder;
 import ch.tutti.android.applover.criteria.AppLoverCustomEventCriteria;
 import ch.tutti.android.applover.criteria.AppLoverFirstLaunchDaysCriteria;
 import ch.tutti.android.applover.criteria.AppLoverInstallDaysCriteria;
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
@@ -80,6 +86,24 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         // Show a dialog if meets conditions
         appLover.showDialogIfConditionsMet(this);
+
+        //
+        appLover.setDialogsConfigurator(new ConfigureDialogs() {
+            @Override
+            public void configureFirstDialog(@NonNull MaterialDialog.Builder builder) {
+                builder.negativeColor(Color.RED);
+            }
+
+            @Override
+            public void configureRateDialog(@NonNull MaterialDialog.Builder builder) {
+                builder.negativeText("No no no");
+            }
+
+            @Override
+            public void configureEmailDialog(@NonNull MaterialDialog.Builder builder) {
+                builder.positiveText("Say yes to email!");
+            }
+        });
 
         findViewById(R.id.button_event1).setOnClickListener(this);
         findViewById(R.id.button_event2).setOnClickListener(this);
