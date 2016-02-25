@@ -221,6 +221,18 @@ public class AppLover {
         }
     }
 
+    /**
+     * Show feedback dialog right away.
+     *
+     * @param activity activity
+     */
+    public void showDialogForced(final Activity activity) {
+        if (!AppLoverDialogHelper.isDialogShown(activity)) {
+            AppLoverDialogHelper.showDialog(
+                    activity, AppLover.DIALOG_TYPE_FIRST, getAppNameResId(activity));
+        }
+    }
+
     private int getAppNameResId(Context context) {
         return mAppNameResId == 0 ? context.getApplicationInfo().labelRes : mAppNameResId;
     }

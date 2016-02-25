@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button_event1).setOnClickListener(this);
         findViewById(R.id.button_event2).setOnClickListener(this);
         findViewById(R.id.button_clear).setOnClickListener(this);
+        findViewById(R.id.button_force).setOnClickListener(this);
     }
 
     @Override
@@ -127,6 +128,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 AppLover.get(this).monitorCustomEvent(this, "2");
                 showCurrentStats();
                 break;
+            case R.id.button_force:
+                AppLover.get(this).showDialogForced(this);
             case R.id.button_clear:
                 AppLover.get(this).reset(this);
                 showCurrentStats();
