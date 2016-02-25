@@ -24,7 +24,6 @@ import android.widget.TextView;
 import java.security.InvalidParameterException;
 
 import ch.tutti.android.applover.AppLover;
-import ch.tutti.android.applover.AppLoverDialogStyle;
 import ch.tutti.android.applover.criteria.AppLoverAppLaunchCriteria;
 import ch.tutti.android.applover.criteria.AppLoverCriteriaBuilder;
 import ch.tutti.android.applover.criteria.AppLoverCustomEventCriteria;
@@ -47,15 +46,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         // Basic configuration. Email is needed. Tracking (analytics) and style are optional.
         appLover.setFeedbackEmail("support@yourapp.com")
-                .setOnTrackListener(new SampleOnTrackListener())
-                .setStyle(new AppLoverDialogStyle()
-                        .loveStyle(new AppLoverDialogStyle.Style()
-                                .positiveBackground(R.drawable.button_positive)
-                                .negativeBackground(R.drawable.button_negative))
-                        .rateStyle(new AppLoverDialogStyle.Style()
-                                .positiveBackground(R.drawable.button_positive))
-                        .emailStyle(new AppLoverDialogStyle.Style()
-                                .positiveBackground(R.drawable.button_positive)));
+                .setOnTrackListener(new SampleOnTrackListener());
 
         // Setting up of thresholds
         // All of the thresholds have to happen for the dialog to trigger

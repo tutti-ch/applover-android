@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        minSdkVersion 8
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
@@ -20,6 +20,6 @@ dependencies {
     compile project(':library')
     // or
     // compile 'ch.tutti.android.applover:library:<version>
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
     compile fileTree(dir: 'libs', include: ['*.jar', '*.aar'])
 }

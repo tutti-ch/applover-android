@@ -47,11 +47,6 @@ public class AppLoverDialogFragment extends DialogFragment
         AppLoverDialogHelper.showDialog(getActivity(), AppLover.DIALOG_TYPE_EMAIL, getArguments());
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        AppLoverDialogHelper.updateDialogStyle(getArguments(), getDialog());
-    }
 
     @Override
     public void onCancel(DialogInterface dialog) {

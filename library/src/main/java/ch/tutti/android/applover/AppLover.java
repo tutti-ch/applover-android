@@ -68,8 +68,6 @@ public class AppLover {
 
     private String mFeedbackEmail;
 
-    private AppLoverDialogStyle mStyle;
-
     private HashMap<String, Integer> mCustomEventThresholdMap
             = new HashMap<String, Integer>();
 
@@ -97,15 +95,6 @@ public class AppLover {
 
     public AppLover setAppName(int textResId) {
         mAppNameResId = textResId;
-        return this;
-    }
-
-    public AppLoverDialogStyle getStyle() {
-        return mStyle == null ? new AppLoverDialogStyle() : mStyle;
-    }
-
-    public AppLover setStyle(AppLoverDialogStyle style) {
-        mStyle = style;
         return this;
     }
 

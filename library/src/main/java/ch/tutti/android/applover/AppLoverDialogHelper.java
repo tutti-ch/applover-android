@@ -43,7 +43,7 @@ class AppLoverDialogHelper {
     }
 
     public static Dialog createDialog(DialogListener listener, Bundle arguments,
-            Bundle savedInstanceState) {
+                                      Bundle savedInstanceState) {
         int dialogType = arguments.getInt(ARGUMENT_DIALOG_TYPE);
         if (savedInstanceState == null) {
             AppLover.get(null).trackDialogShown(dialogType);
@@ -80,7 +80,7 @@ class AppLoverDialogHelper {
      * @param activity fragment activity
      */
     private static void showDialogSupport(final FragmentActivity activity, int dialogType,
-            int appNameResId) {
+                                          int appNameResId) {
         final AppLoverDialogSupportFragment fragment =
                 AppLoverDialogSupportFragment.newInstance(dialogType, appNameResId);
         fragment.show(activity.getSupportFragmentManager(), DIALOG_TAG);
@@ -93,47 +93,10 @@ class AppLoverDialogHelper {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private static void showDialogSupport(final Activity activity, int dialogType,
-            int appNameResId) {
+                                          int appNameResId) {
         final AppLoverDialogFragment fragment =
                 AppLoverDialogFragment.newInstance(dialogType, appNameResId);
         fragment.show(activity.getFragmentManager(), DIALOG_TAG);
-    }
-
-    public static void updateDialogStyle(Bundle arguments, Dialog dialog) {
-        AlertDialog alertDialog = (AlertDialog) dialog;
-        int dialogType = arguments.getInt(ARGUMENT_DIALOG_TYPE);
-        AppLoverDialogStyle style = AppLover.get(null).getStyle();
-
-        switch (dialogType) {
-            case AppLover.DIALOG_TYPE_FIRST:
-                applyStyle(alertDialog, style.loveDialogStyle);
-                break;
-            case AppLover.DIALOG_TYPE_RATE:
-                applyStyle(alertDialog, style.rateDialogStyle);
-                break;
-            case AppLover.DIALOG_TYPE_EMAIL:
-                applyStyle(alertDialog, style.emailDialogStyle);
-                break;
-        }
-    }
-
-    private static void applyStyle(AlertDialog dialog, AppLoverDialogStyle.Style style) {
-        if (style == null) {
-            return;
-        }
-
-        if (style.positiveButtonBackground != 0) {
-            dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-                    .setBackgroundResource(style.positiveButtonBackground);
-        }
-        if (style.neutralButtonBackground != 0) {
-            dialog.getButton(AlertDialog.BUTTON_NEUTRAL)
-                    .setBackgroundResource(style.neutralButtonBackground);
-        }
-        if (style.negativeButtonBackground != 0) {
-            dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
-                    .setBackgroundResource(style.negativeButtonBackground);
-        }
     }
 
     public static void onCancel(Context context) {

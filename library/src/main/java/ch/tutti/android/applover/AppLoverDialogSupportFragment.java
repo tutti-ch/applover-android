@@ -46,12 +46,6 @@ public class AppLoverDialogSupportFragment extends DialogFragment
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        AppLoverDialogHelper.updateDialogStyle(getArguments(), getDialog());
-    }
-
-    @Override
     public void onCancel(DialogInterface dialog) {
         super.onCancel(dialog);
         AppLover.get(null).trackDialogCanceled(
