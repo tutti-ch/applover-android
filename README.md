@@ -1,4 +1,5 @@
 # AppLover - Android
+[![Release](https://jitpack.io/v/tutti-ch/applover-android.svg)](https://jitpack.io/#tutti-ch/applover-android)
 
 ![AppLover](https://raw.github.com/tutti-ch/applover-android/master/preview.png)
 
@@ -12,11 +13,23 @@
  - Hook for analytics
 
 ## Usage
-A more extensive sample can be found here: https://github.com/tutti-ch/applover-android/tree/master/sample
 
-build.gradle
+Add this in your root `build.gradle` file (**not** your module `build.gradle` file):
+
+```gradle
+allprojects {
+    repositories {
+        ...
+        maven { url "https://jitpack.io" }
+    }
+}
 ```
-compile 'ch.tutti.android.applover:library:1.0+'
+
+```gradle
+dependencies {
+    ...
+    compile 'com.github.tutti-ch:applover-android:v2.1'
+}
 ```
 
 MainActivity.java:
