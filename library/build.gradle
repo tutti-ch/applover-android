@@ -31,6 +31,4 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-apply from: 'https://raw.github.com/shamanland/gradle-mvn-push/master/gradle-mvn-push.gradle'
-// using above because that one has a necessary fix to comply with 0.10+ android gradle plugin.
-//apply from: 'https://raw.github.com/chrisbanes/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
